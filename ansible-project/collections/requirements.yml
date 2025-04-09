@@ -1,0 +1,3 @@
+# filepath: c:\temp\Ansible\Dellos6Swkey\ansible-project\requirements.yml
+collections:
+  - name: dellemc.os6

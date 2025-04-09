@@ -1,0 +1,19 @@
+---
+- name: Show version on Dell EMC OS6 devices
+  hosts: all
+  gather_facts: no
+  collections:
+    - dellemc.os6
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: dellemc.os6.os6
+  tasks:
+    - name: Run 'show version' command
+      os6_command:
+        commands:
+          - show version
+      register: version_output
+
+    - name: Display 'show version' output
+      debug:
+        var: version_output.stdout_lines

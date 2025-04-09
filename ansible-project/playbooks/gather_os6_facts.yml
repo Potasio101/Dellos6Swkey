@@ -2,10 +2,12 @@
 - name: Gather facts from Dell EMC OS6 device
   hosts: all
   gather_facts: no
+  collections:
+    - dellemc.os6
 
   tasks:
     - name: Collect facts
-      dellemc.os6.os6_facts:
+      os6_facts:
         gather_subset: all
       register: os6_facts
 

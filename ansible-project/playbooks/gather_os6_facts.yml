@@ -5,7 +5,7 @@
 
   tasks:
     - name: Collect facts
-      dellemc.os6.os6_facts:
+      os6_facts:
         gather_subset: all
       register: os6_facts
 

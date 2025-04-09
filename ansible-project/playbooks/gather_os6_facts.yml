@@ -1,6 +1,6 @@
 ---
 - name: Gather facts from Dell EMC OS6 device
-  hosts: os6_devices
+  hosts: all
   gather_facts: no
 
   tasks:

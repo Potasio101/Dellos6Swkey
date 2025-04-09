@@ -1,0 +1,29 @@
+- name: Ensure common packages are installed
+  apt:
+    name:
+      - git
+      - curl
+      - vim
+    state: present
+
+- name: Create a directory for common files
+  file:
+    path: /opt/common
+    state: directory
+
+- name: Copy configuration files
+  copy:
+    src: files/
+    dest: /opt/common/
+    mode: '0644'
+
+- name: Template configuration file
+  template:
+    src: templates/config.j2
+    dest: /etc/myapp/config.conf
+
+- name: Start myapp service
+  service:
+    name: myapp
+    state: started
+    enabled: true

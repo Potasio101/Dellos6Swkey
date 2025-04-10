@@ -1,0 +1,17 @@
+---
+- name: Test NetBox Dynamic Inventory
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Mostrar hostname del switch
+      debug:
+        msg: "Switch encontrado: {{ inventory_hostname }}"
+
+    - name: Mostrar IP de gestión
+      debug:
+        var: ansible_host
+
+    - name: Mostrar etiquetas desde NetBox (si están disponibles)
+      debug:
+        var: group_names

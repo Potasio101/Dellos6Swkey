@@ -1,0 +1,39 @@
+vlans:
+  - id: 1
+    name: Default Vlan
+  - id: 10
+    name: Core
+  - id: 15
+    name: Access Point
+  - id: 20
+    name: Management
+  - id: 30
+    name: Data_Wired
+  - id: 40
+    name: HR
+  - id: 50
+    name: Finance
+  - id: 60
+    name: IT
+  - id: 80
+    name: Servers
+  - id: 85
+    name: Camera Server
+  - id: 100
+    name: Voice
+  - id: 110
+    name: Wireless-Staff
+  - id: 120
+    name: Wireless-Students
+  - id: 130
+    name: Wireless-Guests
+  - id: 140
+    name: Printers
+  - id: 150
+    name: IoT
+  - id: 155
+    name: Conference Rooms
+  - id: 160
+    name: Cameras
+  - id: 170
+    name: Access Control

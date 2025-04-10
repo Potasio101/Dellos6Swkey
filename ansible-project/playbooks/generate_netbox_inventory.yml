@@ -3,7 +3,7 @@
   hosts: localhost
   gather_facts: no
   vars:
-    netbox_url: "https://netbox.swkey.org/"  # Replace with your NetBox URL
+    netbox_url: "http://10.1.1.87"  # Replace with the NetBox server IP
     netbox_token: "aacf5a29ceeeaaceae12add71f1c9ca44f6c79dd" # Replace with your NetBox API token
     output_path: "/etc/semaphore/netbox_inventory.yml"  # Path within the persistent volume
   tasks:

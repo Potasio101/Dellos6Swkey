@@ -1,5 +1,5 @@
 # netbox_inventory.yml
-plugin: netbox
+plugin: netbox.netbox.nb_inventory
 api_url: http://10.1.1.87
 token: "aacf5a29ceeeaaceae12add71f1c9ca44f6c79dd"
 validate_certs: false

@@ -25,9 +25,7 @@
       copy:
         content: "{{ netbox_inventory | to_yaml }}"
         dest: "{{ output_path }}"
-        owner: root
-        group: root
-        mode: '0644'
+        mode: '0644'  # Only set permissions, skip ownership changes
 
     - name: Display saved inventory path
       debug:

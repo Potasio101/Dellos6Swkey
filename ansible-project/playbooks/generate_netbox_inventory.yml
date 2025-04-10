@@ -1,0 +1,34 @@
+---
+- name: Generate inventory from NetBox
+  hosts: localhost
+  gather_facts: no
+  vars:
+    netbox_url: "https://netbox.swkey.org/"  # Replace with your NetBox URL
+    netbox_token: "aacf5a29ceeeaaceae12add71f1c9ca44f6c79dd" # Replace with your NetBox API token
+    output_path: "/etc/semaphore/netbox_inventory.yml"  # Path within the persistent volume
+  tasks:
+    - name: Query NetBox for inventory
+      uri:
+        url: "{{ netbox_url }}/api/dcim/devices/"
+        method: GET
+        validate_certs: no
+        headers:
+          Authorization: "Token {{ netbox_token }}"
+        return_content: yes
+      register: netbox_response
+
+    - name: Parse NetBox response
+      set_fact:
+        netbox_inventory: "{{ netbox_response.json.results }}"
+
+    - name: Save NetBox inventory to file
+      copy:
+        content: "{{ netbox_inventory | to_yaml }}"
+        dest: "{{ output_path }}"
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Display saved inventory path
+      debug:
+        msg: "NetBox inventory saved to {{ output_path }}"

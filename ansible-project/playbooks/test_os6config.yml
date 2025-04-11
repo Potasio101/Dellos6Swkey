@@ -9,7 +9,6 @@
     ansible_network_os: dellemc.os6.os6
     ansible_become: yes
     ansible_become_method: enable
-    ansible_become_password: "<enable_password>"
   tasks:
     - name: Test os6_config
       os6_config:

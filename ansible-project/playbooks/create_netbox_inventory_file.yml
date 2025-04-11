@@ -13,6 +13,4 @@
           validate_certs: false
           group_by:
             - sites
-            - role
-            - tag
         mode: '0644'

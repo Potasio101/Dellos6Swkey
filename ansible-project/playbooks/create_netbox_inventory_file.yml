@@ -15,5 +15,5 @@
           group_names:
             - site
             - role
-            - tags
+            - tag
         mode: '0644'

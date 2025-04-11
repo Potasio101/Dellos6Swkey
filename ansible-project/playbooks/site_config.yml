@@ -1,14 +1,11 @@
----
-- name: Configurar switches por sitio
-  hosts: all
+- name: Cambiar hostname con os6_config
+  hosts: os6_switches
   gather_facts: no
+  connection: network_cli
   collections:
-    - dellemc.os6  
-  
-  vars:
-    ansible_connection: network_cli
-    ansible_network_os: dellemc.os6.os6
-    hostname: "{{ inventory_hostname }}"
-
-  os6_system:
-    hostname: "{{ inventory_hostname }}"
+    - dellemc.os6
+  tasks:
+    - name: Cambiar hostname a SW-LAB01
+      os6_config:
+        lines:
+          - hostname SW-LAB01

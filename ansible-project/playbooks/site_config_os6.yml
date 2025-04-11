@@ -3,6 +3,8 @@
   hosts: all
   gather_facts: no
   connection: network_cli
+  collections:
+    - dellemc.os6
 
   vars:
     ansible_network_os: dellemc.os6.os6
@@ -12,4 +14,4 @@
       hostname: "{{ inventory_hostname }}"
 
   roles:
-    - role: dellemc.os6.os6_system
+    - os6_system

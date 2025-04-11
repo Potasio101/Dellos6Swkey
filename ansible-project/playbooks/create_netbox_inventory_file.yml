@@ -12,7 +12,7 @@
           api_endpoint: http://10.1.1.87
           token: "aacf5a29ceeeaaceae12add71f1c9ca44f6c79dd"
           validate_certs: false
-          group_by:
+          group_names:
             - site
             - role
             - tags

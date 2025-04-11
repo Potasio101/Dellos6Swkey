@@ -15,6 +15,4 @@
             - sites
             - device_roles
             - platforms
-            - serial
-            - tags
         mode: '0644'

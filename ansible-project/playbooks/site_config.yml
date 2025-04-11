@@ -10,7 +10,5 @@
     ansible_network_os: dellemc.os6.os6
     hostname: "{{ inventory_hostname }}"
 
-  tasks:
-    - name: Aplicar hostname con rol oficial OS6
-      import_role:
-        name: dellemc.os6.hostname
+  os6_system:
+    hostname: "{{ inventory_hostname }}"

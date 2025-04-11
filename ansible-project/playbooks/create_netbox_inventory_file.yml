@@ -17,4 +17,5 @@
             - platforms
             - tags
             - region
+            - status
         mode: '0644'

@@ -15,4 +15,5 @@
             - sites
             - device_roles
             - platforms
+            - tags
         mode: '0644'

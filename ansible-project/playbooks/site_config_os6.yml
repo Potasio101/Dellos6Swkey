@@ -1,0 +1,15 @@
+---
+- name: Configurar hostname en switches Dell OS6
+  hosts: all
+  gather_facts: no
+  connection: network_cli
+
+  vars:
+    ansible_network_os: dellemc.os6.os6
+    ansible_become: yes
+    ansible_become_method: enable
+    os6_system:
+      hostname: "{{ inventory_hostname }}"
+
+  roles:
+    - os6_system

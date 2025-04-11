@@ -8,12 +8,16 @@
         dest: /etc/semaphore/netbox_inventory.yml
         content: |
           plugin: netbox.netbox.nb_inventory
-          plugin_type: inventory
           api_endpoint: http://10.1.1.87
           token: "aacf5a29ceeeaaceae12add71f1c9ca44f6c79dd"
           validate_certs: false
-          group_names:
+          group_by:
             - site
-            - role
+            - device_role
+            - device_type
+            - platform
+            - status
             - tag
+            - role
+            - sites        
         mode: '0644'

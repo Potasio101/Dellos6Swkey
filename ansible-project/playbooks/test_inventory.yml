@@ -1,6 +1,6 @@
 ---
 - name: Test NetBox Dynamic Inventory
-  hosts: localhost
+  hosts: all
   gather_facts: no
 
   tasks:

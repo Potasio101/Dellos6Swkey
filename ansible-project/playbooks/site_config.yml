@@ -1,0 +1,7 @@
+---
+- name: Configurar switches por sitio
+  hosts: all
+  gather_facts: no
+
+  roles:
+    - hostname

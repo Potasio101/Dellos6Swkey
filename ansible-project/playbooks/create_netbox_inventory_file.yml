@@ -16,4 +16,5 @@
             - device_roles
             - platforms
             - tags
+            - region
         mode: '0644'

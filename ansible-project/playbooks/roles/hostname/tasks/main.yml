@@ -1,5 +1,4 @@
 ---
 - name: Configurar hostname en switch Dell OS6
   os6_config:
-    lines:
-      - "hostname {{ inventory_hostname }}"
+    lines: ['hostname {{ inventory_hostname }}']

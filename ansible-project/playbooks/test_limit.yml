@@ -1,0 +1,15 @@
+---
+- name: Test de uso de --limit con inventario NetBox
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Mostrar el nombre del dispositivo
+      debug:
+        msg: "Estoy en: {{ inventory_hostname }}"
+
+    - name: Mostrar site, role y tags si están disponibles
+      debug:
+        msg:
+          - "Grupo(s): {{ group_names }}"
+          - "Dirección IP: {{ ansible_host }}"

@@ -64,4 +64,36 @@ ansible-project
 - The `ansible.cfg` file contains configuration settings for Ansible, including the inventory location and roles path.
 - Use the `group_vars` and `host_vars` directories to define variables that apply to specific groups or hosts.
 
+## Testing and Limiting Playbook Execution
+
+You can use the `--limit` flag to target specific devices or groups when running playbooks. Below are some examples:
+
+### Examples
+
+- **View devices from the site `houston`:**
+  ```bash
+  ansible-playbook playbooks/test_limit.yml --limit site_houston
+  ```
+
+- **View devices with the role `core-switch`:**
+  ```bash
+  ansible-playbook playbooks/test_limit.yml --limit role_core-switch
+  ```
+
+- **View devices with the tag `NetBox custom-config`:**
+  ```bash
+  ansible-playbook playbooks/test_limit.yml --limit tag_custom-config
+  ```
+
+- **Target a specific device by name:**
+  ```bash
+  ansible-playbook playbooks/test_limit.yml --limit switch-01
+  ```
+
+### Notes
+- Replace `test_limit.yml` with the name of the playbook you want to execute.
+- Ensure that the inventory and variables are properly configured to match the filters used in the `--limit` flag.
+
+For more details on limiting playbook execution, refer to the [Ansible documentation on patterns](https://docs.ansible.com/ansible/latest/user_guide/intro_patterns.html).
+
 For more detailed information on Ansible, refer to the [Ansible documentation](https://docs.ansible.com/).

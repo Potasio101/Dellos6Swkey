@@ -13,4 +13,6 @@
     - name: Set hostname using os6_command
       os6_command:
         commands:
+          - "configure terminal"
           - "hostname Test-Switch"
+          - "exit"

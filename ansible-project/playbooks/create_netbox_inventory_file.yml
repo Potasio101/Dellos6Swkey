@@ -14,10 +14,4 @@
           group_by:
             - site
             - device_role
-            - device_type
-            - platform
-            - status
-            - tag
-            - role
-            - sites        
         mode: '0644'

@@ -13,5 +13,6 @@
           validate_certs: false
           group_by:
             - site
-            - device_role
+            - role
+            - tag
         mode: '0644'

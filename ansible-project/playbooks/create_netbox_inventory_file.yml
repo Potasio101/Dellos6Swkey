@@ -1,0 +1,17 @@
+---
+- name: Crear archivo netbox_inventory.yml para inventario dinámico
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Crear archivo de inventario dinámico en /etc/semaphore/
+      ansible.builtin.copy:
+        dest: /etc/semaphore/netbox_inventory.yml
+        content: |
+          plugin: netbox.netbox.nb_inventory
+          plugin_type: inventory
+          api_endpoint: http://10.1.1.87
+          token: "aacf5a29ceeeaaceae12add71f1c9ca44f6c79dd"
+          validate_certs: false
+        mode: '0644'
+        owner: semaphore
+        group: semaphore

@@ -1,0 +1,29 @@
+---
+- name: Run multiple show commands on Dell OS6 switches
+  hosts: all
+  gather_facts: no
+  connection: network_cli
+
+  vars:
+    ansible_network_os: dellemc.os6.os6
+    ansible_become: yes
+    ansible_become_method: enable
+
+  tasks:
+    - name: Run multiple show commands
+      dellemc.os6.os6_command:
+        commands:
+          - show version
+          - show running-config
+          - show vlan
+          - show interfaces status
+          - show interfaces counters
+          - show ip interface brief
+          - show lldp neighbors
+          - show spanning-tree
+          - show mac address-table
+      register: show_output
+
+    - name: Print show command output
+      debug:
+        var: show_output.stdout_lines

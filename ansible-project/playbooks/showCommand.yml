@@ -1,5 +1,5 @@
 ---
-- name: Run multiple show commands on Dell OS6 switches
+- name: Run multiple show commands on Dell OS6 switches (separated)
   hosts: all
   gather_facts: no
   connection: network_cli
@@ -10,20 +10,92 @@
     ansible_become_method: enable
 
   tasks:
-    - name: Run multiple show commands
+    - name: Show version
       dellemc.os6.os6_command:
         commands:
           - show version
-          - show running-config
-          - show vlan
-          - show interfaces status
-          - show isdp neighbors
-          - show ip interface
-          - show lldp remote-device all
-          - show spanning-tree
-          - show mac address-table
-      register: show_output
+      register: show_version
 
-    - name: Print show command output
+    - name: Show running-config
+      dellemc.os6.os6_command:
+        commands:
+          - show running-config
+      register: show_running_config
+
+    - name: Show VLAN
+      dellemc.os6.os6_command:
+        commands:
+          - show vlan
+      register: show_vlan
+
+    - name: Show interfaces status
+      dellemc.os6.os6_command:
+        commands:
+          - show interfaces status
+      register: show_int_status
+
+    - name: Show ISDP neighbors
+      dellemc.os6.os6_command:
+        commands:
+          - show isdp neighbors
+      register: show_isdp
+
+    - name: Show IP interface
+      dellemc.os6.os6_command:
+        commands:
+          - show ip interface
+      register: show_ip_interface
+
+    - name: Show LLDP remote-device all
+      dellemc.os6.os6_command:
+        commands:
+          - show lldp remote-device all
+      register: show_lldp
+
+    - name: Show spanning-tree
+      dellemc.os6.os6_command:
+        commands:
+          - show spanning-tree
+      register: show_stp
+
+    - name: Show MAC address table
+      dellemc.os6.os6_command:
+        commands:
+          - show mac address-table
+      register: show_mac
+
+    - name: Print show version
       debug:
-        var: show_output.stdout_lines
+        var: show_version.stdout_lines
+
+    - name: Print show running-config
+      debug:
+        var: show_running_config.stdout_lines
+
+    - name: Print show vlan
+      debug:
+        var: show_vlan.stdout_lines
+
+    - name: Print show interfaces status
+      debug:
+        var: show_int_status.stdout_lines
+
+    - name: Print show isdp neighbors
+      debug:
+        var: show_isdp.stdout_lines
+
+    - name: Print show ip interface
+      debug:
+        var: show_ip_interface.stdout_lines
+
+    - name: Print show lldp remote-device all
+      debug:
+        var: show_lldp.stdout_lines
+
+    - name: Print show spanning-tree
+      debug:
+        var: show_stp.stdout_lines
+
+    - name: Print show mac address-table
+      debug:
+        var: show_mac.stdout_lines

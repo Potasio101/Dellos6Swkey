@@ -19,7 +19,7 @@
           - show interfaces status
           - show isdp neighbors
           - show ip interface
-          - show lldp remote-devices all
+          - show lldp remote-device all
           - show spanning-tree
           - show mac address-table
       register: show_output

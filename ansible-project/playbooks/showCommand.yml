@@ -17,9 +17,9 @@
           - show running-config
           - show vlan
           - show interfaces status
-          - show interfaces counters
-          - show ip interface brief
-          - show lldp neighbors
+          - show isdp neighbors
+          - show ip interface
+          - show lldp remote-devices all
           - show spanning-tree
           - show mac address-table
       register: show_output

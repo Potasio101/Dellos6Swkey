@@ -8,7 +8,7 @@
       set_fact:
         site_prefixes: "{{ lookup('netbox.netbox.nb_lookup', 'prefixes',
                           api_filter='site=austin-hq',
-                          api_endpoint='http://10.1.1.87',
+                          api_endpoint='http://10.1.1.87/',
                           token='aacf5a29ceeeaaceae12add71f1c9ca44f6c79dd',
                           validate_certs=False) }}"
 

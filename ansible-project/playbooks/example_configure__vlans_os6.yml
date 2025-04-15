@@ -16,6 +16,5 @@
     ansible_network_os: dellemc.os6.os6
     ansible_become: yes
     ansible_become_method: enable
-
-   roles:
+  roles:
     - os6_vlan

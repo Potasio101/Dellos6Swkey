@@ -11,6 +11,9 @@
         name: User_Data_Wired
       - id: 100
         name: Voice
+    ansible_network_os: dellemc.os6.os6
+    ansible_become: yes
+    ansible_become_method: enable
 
   tasks:
     - name: Create VLANs on Dell OS6 switch

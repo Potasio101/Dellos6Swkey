@@ -10,6 +10,6 @@
           "Device {{ item.value.display_name }} (ID: {{ item.key }}) was
            manufactured by {{ item.value.device_type.manufacturer.name }}"
       loop: "{{ query('netbox.netbox.nb_lookup', 'devices',
-                      api_endpoint='http://10.1.1.87/',
+                      api_endpoint='https://10.1.1.87/api/',
                       token='aacf5a29ceeeaaceae12add71f1c9ca44f6c79dd',
                       validate_certs=false) }}"

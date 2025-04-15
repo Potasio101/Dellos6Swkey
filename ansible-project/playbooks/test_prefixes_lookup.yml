@@ -1,13 +1,15 @@
+---
 - name: Probar NetBox lookup y ver estructura
   hosts: localhost
   gather_facts: no
 
   tasks:
-    - name: Mostrar estructura cruda de los dispositivos
+    - name: Query devices from NetBox and display details
       debug:
-        var: lookup_result
-      vars:
-        lookup_result: "{{ query('netbox.netbox.nb_lookup', 'devices',
-                                  api_endpoint='https://10.1.1.87/',
-                                  token='aacf5a29ceeeaaceae12add71f1c9ca44f6c79dd',
-                                  validate_certs=false) }}"
+        msg: >
+          "Device {{ item.value.name }} (ID: {{ item.key }}) was
+           manufactured by {{ item.value.device_type.manufacturer.name }}"
+      loop: "{{ query('netbox.netbox.nb_lookup', 'devices',
+                      api_endpoint='https://10.1.1.87/',
+                      token='aacf5a29ceeeaaceae12add71f1c9ca44f6c79dd',
+                      validate_certs=False) }}"

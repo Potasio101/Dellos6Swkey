@@ -5,5 +5,13 @@
 
   tasks:
     - name: Obtener prefixes del sitio Austin HQ
+      set_fact:
+        site_prefixes: "{{ lookup('netbox.netbox.nb_lookup', 'prefixes',
+                          api_filter='site=austin-hq',
+                          api_endpoint='http://10.1.1.87',
+                          token='aacf5a29ceeeaaceae12add71f1c9ca44f6c79dd',
+                          validate_certs=False) }}"
+    
+    - name: Mostrar prefixes obtenidos
       debug:
-        var: "{{ lookup('netbox.netbox.nb_lookup', 'prefixes', api_filter='site=austin-hq', api_endpoint='http://10.1.1.87', token='aacf5a29ceeeaaceae12add71f1c9ca44f6c79dd',validate_certs:false) }}"
+        var: site_prefixes

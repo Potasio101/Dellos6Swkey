@@ -1,0 +1,47 @@
+---
+# tasks file for uplink_trunk_config
+
+- name: 2 - Get Interfaces
+  uri:
+      url: "{{ NETBOX_URL }}api/dcim/interfaces/?device={{ inventory_hostname }}&limit=0"
+      method: GET
+      return_content: yes
+      validate_certs: no 
+      headers:
+          accept: "application/json"
+          Authorization: "Token {{ NETBOX_TOKEN }}"
+  register: interfaces
+
+# - name: Debug the result
+#   debug:
+#     var: item_names
+#   vars:
+#     item_names: "{{ interfaces.json.results | json_query('[?mode.value==`tagged-all`].name') | join(', ') }}"
+
+- name: Set item_names as a fact
+  set_fact:
+    item_names: "{{ interfaces.json.results | json_query('[?mode.value==`tagged-all`].name') | join(',') }}"  
+
+- name: Check current trunk port configuration
+  ansible.netcommon.cli_command:
+    command: "show interface ethernet {{ item }} switchport"
+  loop: "{{ item_names.split(',') }}"
+  register: result
+
+# - name: Debug the result
+#   debug:
+#     var: result
+
+- name: Set trunk port uplinks Edgeswitch
+  ansible.netcommon.cli_command:
+    command: "{{ item }}"
+  loop:
+    - "configure"
+    - "interface {{ item_names }}"
+    - "description 'Uplink to bridge switch'"
+    - "switchport mode trunk"
+    - "vlan participation include 1"
+    - "exit"
+    - "exit"
+  # when: 
+  #   - "'VLAN Switchport mode:Trunk' not in result.results.stdout"

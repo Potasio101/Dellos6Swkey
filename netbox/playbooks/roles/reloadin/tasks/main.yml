@@ -1,0 +1,8 @@
+---
+# tasks file for reset_trunk_config
+
+- name: Reload in in 10 minutes
+  ansible.netcommon.cli_command:
+    command: "{{ item }}"
+  loop:
+    - "reload in 00:10"

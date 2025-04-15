@@ -1,0 +1,12 @@
+---
+- name: Ensure trunk port is present
+  hosts: bck
+  gather_facts: no
+  become: true
+  become_method: enable
+
+  tasks:
+    - name: Set trunk port
+      edgeswitch_trunk1:
+        port: "0/35"
+        state: present

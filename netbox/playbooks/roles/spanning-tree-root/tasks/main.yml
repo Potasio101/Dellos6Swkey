@@ -1,0 +1,47 @@
+---
+- name: 2 - Get Interfaces
+  uri:
+      url: "{{ NETBOX_URL }}api/dcim/interfaces/?device={{ inventory_hostname }}&limit=0"
+      method: GET
+      return_content: yes
+      validate_certs: no 
+      headers:
+          accept: "application/json"
+          Authorization: "Token {{ NETBOX_TOKEN }}"
+  register: interfaces
+
+- name: Set item_names as a fact
+  set_fact:
+    item_names: "{{ interfaces.json.results | json_query('[?tags[0].name==`downlink`].name') | join(',') }}"  
+
+- name: Debug the result
+  ansible.builtin.debug:
+    var: item_names
+
+- name: Check current trunk port configuration
+  ansible.netcommon.cli_command:
+    command: "show spanning-tree interface {{ item }}"
+  loop: "{{ item_names.split(',') }}"
+  register: result
+
+- name: Parse spanning-tree configuration for root guard status
+  set_fact:
+    interface_root_guard_status: >-
+      {{ interface_root_guard_status | default({}) | combine({ item.item: ('Root Guard..................................... TRUE' in item.stdout) }) }}
+  loop: "{{ result.results }}"
+
+- name: Debug output of interface_root_guard_status
+  ansible.builtin.debug:
+    var: interface_root_guard_status
+
+- name: Set spanning-tree guard root on downlink trunk ports for each interface
+  include_tasks: configure_interface.yml
+  loop: "{{ item_names.split(',') }}"
+  loop_control:
+    loop_var: interface
+  when: 
+    - interface in item_names.split(',')
+    - not interface_root_guard_status[interface]
+
+
+

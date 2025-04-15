@@ -1,0 +1,27 @@
+---
+# tasks file for collect_switch_info
+
+
+- name: Include role and register output
+  include_role:
+    name: show-spanning-tree 
+
+
+# - name: Use role output in another task
+#   debug:
+#     var: spanning_tree_data
+
+- name: Parse output with TextFSM
+  set_fact:
+        parsed_output: "{{ spanning_tree_data | parse_cli_textfsm('/home/adminswk/cnl/netbox/playbooks/templates/edgeswitchshowspanningtree.textfsm') }}"
+
+# - name: Display parsed output
+#   debug:
+#         var: parsed_output
+
+- name: Save the information in netbox_device
+  netbox_url:  # required. URL of the Netbox instance resolvable by Ansible control host
+  netbox_token:  # required. The token created within Netbox to authorize API access
+  data:  # required. Defines the device configuration
+  state: absent # not required. choices: absent;present. Use C(present) or C(absent) for adding or removing.
+  validate_certs: yes # not required. If C(no), SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.

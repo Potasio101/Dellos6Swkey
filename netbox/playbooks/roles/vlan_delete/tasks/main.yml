@@ -1,0 +1,35 @@
+# tasks file for vlan_config
+
+- name: 2 - Get Interfaces
+  uri:
+      url: "{{ NETBOX_URL }}api/dcim/interfaces/?device={{ inventory_hostname }}&limit=0"
+      method: GET
+      return_content: yes
+      validate_certs: no 
+      headers:
+          accept: "application/json"
+          Authorization: "Token {{ NETBOX_TOKEN }}"
+  register: interfaces
+
+    # - name: Display all names from interfaces
+    #   ansible.builtin.debug:
+    #     msg: "Interface: {{ item.name }}, Untagged VLAN ID: {{ item.untagged_vlan.vid }}, VLAN Name: {{ item.untagged_vlan.name }}"
+    #   loop: "{{ interfaces.json.results }}"
+    #   when: item.untagged_vlan is not none
+
+- name: Remove and Delete Vlan and Interfaces
+  community.network.edgeswitch_vlan:
+    vlan_id: "{{ item.untagged_vlan.vid }}"
+    name: "{{ item.untagged_vlan.name  }}"
+    state: "absent"
+    untagged_interfaces: "{{ item.name | default(omit) }}"
+  loop: "{{ interfaces.json.results | json_query('[?mode.value==`access`]') }}"
+  when: item.untagged_vlan.vid is defined
+  timeout: 60
+
+- name: Include interface(s) from VLAN 1 for each VLAN configuration
+  community.network.edgeswitch_vlan:
+    vlan_id: 1
+    untagged_interfaces: "{{ item.name }}"
+  loop: "{{ interfaces.json.results | json_query('[?mode.value==`access`]') }}"
+  timeout: 60

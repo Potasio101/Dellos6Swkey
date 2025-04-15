@@ -1,0 +1,22 @@
+---
+- name: Parse interface data from a file using TextFSM
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Read text from file
+      ansible.builtin.slurp:
+        src: /home/adminswk/cnl/texfsm/Showspanningtree.txt
+      register: file_content
+
+    - name: Decode the content
+      set_fact:
+        file_content_decoded: "{{ (file_content['content'] | b64decode) }}"
+    
+    - name: Parse the output using TextFSM
+      set_fact:
+        parsed_output: "{{ file_content_decoded | parse_cli_textfsm('/home/adminswk/cnl/netbox/playbooks/templates/edgeswitchshowspanningtree.textfsm') }}"
+
+    - name: Display parsed data
+      debug:
+        var: parsed_output

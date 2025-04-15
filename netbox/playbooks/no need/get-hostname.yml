@@ -1,0 +1,13 @@
+---
+- name: Print Inventory Hostname
+  hosts: Jonathan, #sites_program-980-norma-linda
+  gather_facts: no
+  
+  tasks:
+    - name: Display inventory_hostname
+      debug:
+        msg: "The inventory hostname is {{ inventory_hostname }}"
+
+    - name: Display Platform
+      debug:
+        msg: "The platform is {{ hostvars[inventory_hostname]['platforms'] | default('No platform data') }}"

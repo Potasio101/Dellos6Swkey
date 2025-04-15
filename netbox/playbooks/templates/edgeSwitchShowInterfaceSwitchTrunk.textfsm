@@ -1,0 +1,13 @@
+Value Intf (\S+)
+Value PVID (\d+)
+Value Allowed (\S+)
+
+Start
+  # Match the header line but ignore 'Vlans' and 'List'
+  ^Intf\s+PVID\s+Allowed\s+Vlans\s+List -> VLANTable
+
+VLANTable
+  # Match and capture the data lines
+  ^${Intf}\s+${PVID}\s+${Allowed} -> Record
+  # Transition for any other line
+  ^. -> Error

@@ -1,0 +1,10 @@
+---
+- name: Configure VLANs on Switches
+  hosts: e8data
+  gather_facts: no
+  become: true
+  become_method: enable
+
+  roles:
+    - reset_trunk_config
+    - save_config 

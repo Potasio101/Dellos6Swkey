@@ -1,0 +1,124 @@
+---
+- name: Print Inventory Hostname
+  hosts: localhost #sites_program-980-norma-linda
+  gather_facts: no
+  connection: local
+  vars:
+    NETBOX_URL: "{{ lookup('env','NETBOX_URL') }}"
+    NETBOX_TOKEN: "{{ lookup('env','NETBOX_TOKEN') }}"
+
+  tasks:
+
+    - name: Update interface on child device on virtual chassis
+      netbox.netbox.netbox_device_interface:
+        netbox_url: "{{ NETBOX_URL }}"
+        netbox_token: "{{ NETBOX_TOKEN }}"
+        validate_certs: no
+        data:
+          device: Jonathan
+          name: 0/52
+          enabled: false
+          tags: "dc,dns"
+          enabled: true
+
+    # - name: 1 - Get Devices
+    #   uri:
+    #       url: "{{ NETBOX_URL }}api/dcim/devices/?name={{ inventory_hostname }}"
+    #       method: GET
+    #       return_content: yes
+    #       validate_certs: no          
+    #       headers:
+    #           accept: "application/json"
+    #           Authorization: "Token {{ NETBOX_TOKEN }}"
+    #   register: device
+      
+    # - name: 2 - Get Interfaces
+    #   uri:
+    #       url: "{{ NETBOX_URL }}api/dcim/interfaces/?device={{ inventory_hostname }}&limit=0"
+    #       method: GET
+    #       return_content: yes
+    #       validate_certs: no 
+    #       headers:
+    #           accept: "application/json"
+    #           Authorization: "Token {{ NETBOX_TOKEN }}"
+    #   register: interfaces
+    
+    # - name: 3 - Get IP Addresses
+    #   uri:
+    #       url: "{{ NETBOX_URL }}api/ipam/ip-addresses/?device={{ inventory_hostname }}"
+    #       method: GET
+    #       return_content: yes
+    #       validate_certs: no 
+    #       headers:
+    #           accept: "application/json"
+    #           Authorization: "Token {{ NETBOX_TOKEN }}"
+    #   register: ip_addresses
+    
+    # - name: 4 - Get Site Details
+    #   uri:
+    #       url: "{{ NETBOX_URL }}api/dcim/sites/?name={{ device.json.results[0]['site']['name'] }}"
+    #       method: GET
+    #       return_content: yes
+    #       validate_certs: no 
+    #       headers:
+    #           accept: "application/json"
+    #           Authorization: "Token {{ NETBOX_TOKEN }}"
+    #   register: site
+    
+    # - name: 5 - Get List of VLANs for Site {{ device.json.results[0]['site']['name'] }}
+    #   uri:
+    #       url: "{{ NETBOX_URL }}api/ipam/vlans/?site_id={{ site.json.results[0]['id'] }}"
+    #       method: GET
+    #       return_content: yes
+    #       validate_certs: no 
+    #       headers:
+    #           accept: "application/json"
+    #           Authorization: "Token {{ NETBOX_TOKEN }}"
+    #   register: vlans
+    
+    # Uncomment for debugging the JSON Data registered by a play
+    # Change the var value to whatever you need eg. var: ip_addresses.json.results
+    # - name: Display Json Data
+    #   ansible.builtin.debug:
+    #     var: interfaces.json.results
+    
+    # Uncomment to display the Ansible Host Vars for a host 
+    # - name: Display all variables/facts known for a host
+    #   ansible.builtin.debug:
+    #     var: hostvars[inventory_hostname]
+    
+    # - name: Display all variables/facts known for a host
+    #   ansible.builtin.debug:
+    #     var: interfaces.json.results['name']
+    #     # device.json.results[0]['name']
+
+    # - name: Display all names from interfaces
+    #   ansible.builtin.debug:
+    #     msg: "{{ item.untagged_vlan }}"
+    #   loop: "{{ interfaces.json.results }}"
+    #   when: item.untagged_vlan is defined
+
+    # - name: Display all names from interfaces
+    #   ansible.builtin.debug:
+    #     msg: "Interface: {{ item.name }}, Untagged VLAN: {{ item.untagged_vlan }}"
+    #   loop: "{{ interfaces.json.results }}"
+    #   when: item.untagged_vlan is defined
+
+    # - name: Display all names from interfaces
+    #   ansible.builtin.debug:
+    #     msg: "Interface: {{ item.name }}, Untagged VLAN ID: {{ item.untagged_vlan.vid }}, VLAN Name: {{ item.untagged_vlan.name }}"
+    #   loop: "{{ interfaces.json.results }}"
+    #   when: item.untagged_vlan is defined
+
+    # - name: Use VLAN information in a task
+    #   ansible.builtin.command: echo "Interface {{ item.name }} is on VLAN {{ item.untagged_vlan.vid }} ({{ item.untagged_vlan.name }})"
+    #   loop: "{{ interfaces.json.results }}"
+    #   when: item.untagged_vlan is defined
+
+    # - name: Display all names from interfaces
+    #   ansible.builtin.debug:
+    #     msg: "Interface: {{ item.name }}, Untagged VLAN ID: {{ item.untagged_vlan.vid }}, VLAN Name: {{ item.untagged_vlan.name }}"
+    #   loop: "{{ interfaces.json.results }}"
+    #   when: item.untagged_vlan is not none
+
+          

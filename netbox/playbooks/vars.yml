@@ -1,0 +1,240 @@
+
+devices:
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.133
+    device: Exit Shack
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.34
+    device: E14
+  - device_type: EdgeSwitch 16 XG
+    primary_ip: 10.100.10.21
+    device: E3 Fiber Switch
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.77
+    device: Multi Purpose Room/Edu5
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.33
+    device: E13
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.19
+    device: E1
+  - device_type: EdgeSwitch 48 500W
+    primary_ip: 10.100.10.6
+    device: Intake-Medical
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.20
+    device: E2
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.11.47
+    device: D9-Data
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.70
+    device: G1
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.63
+    device: C13
+  - device_type: EdgeSwitch 24 500W
+    primary_ip: 10.100.10.25
+    device: E5
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.59
+    device: C9
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.11.25
+    device: E5 data
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.72
+    device: E7-2
+  - device_type: EdgeSwitch 24 250W
+    primary_ip: 10.100.10.39
+    device: D4
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.11.44
+    device: D6 data
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.55
+    device: C5
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.76
+    device: PD Trailer
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.11.43
+    device: D5-Data
+  - device_type: EdgeSwitch 48 500W
+    primary_ip: 10.100.10.17
+    device: Admin 2
+  - device_type: EdgeSwitch 48 750W
+    primary_ip: 10.100.10.9
+    device: Classroom 22
+  - device_type: EdgeSwitch 24 250W
+    primary_ip: 10.100.10.40
+    device: D5
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.30
+    device: E10
+  - device_type: EdgeSwitch 48 500W
+    primary_ip: 10.100.10.68
+    device: F3 Fiber Switch
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.60
+    device: C10
+  - device_type: EdgeSwitch 48 500W
+    primary_ip: 10.100.10.80
+    device: Jonathan's Testing Switch 48port
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.65
+    device: C15
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.132
+    device: Main Entrance Shack
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.52
+    device: C2
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.58
+    device: C8
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.28
+    device: E8
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.41
+    device: D6
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.11.27
+    device: E7 Data
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.11.41
+    device: D3-Data
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.46
+    device: D11
+  - device_type: EdgeSwitch 24 500W
+    primary_ip: 10.100.10.53
+    device: C3
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.64
+    device: C14
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.37
+    device: D2
+  - device_type: EdgeSwitch 24 500W
+    primary_ip: 10.100.10.71
+    device: Training Office
+  - device_type: EdgeSwitch 12 Fiber
+    primary_ip: 10.100.10.3
+    device: Building B Fiber Core
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.35
+    device: E15
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.43
+    device: D8
+  - device_type: EdgeSwitch 24 250W
+    primary_ip: 10.100.11.76
+    device: GYM Data
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.11.28
+    device: E8 Data
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.54
+    device: C4
+  - device_type: EdgeSwitch 48 500W
+    primary_ip: 10.100.11.50
+    device: D12 Data
+  - device_type: EdgeSwitch 48 500W
+    primary_ip: 10.100.11.66
+    device: C13 Data
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.44
+    device: D9
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.62
+    device: C12
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.61
+    device: C11
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.11.45
+    device: D7 DATA
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.11.29
+    device: E9 Data
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.51
+    device: C1
+  - device_type: EdgeSwitch 16 150W
+    primary_ip: 10.100.10.36
+    device: D1
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.75
+    device: Classroom 26
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.57
+    device: C7
+  - device_type: EdgeSwitch 24 500W
+    primary_ip: 10.100.10.8
+    device: Classroom 21
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.31
+    device: E11
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.100
+    device: E9
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.11.26
+    device: E6 Data
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.56
+    device: C6
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.115
+    device: D15
+  - device_type: EdgeSwitch 24 500W
+    primary_ip: 10.100.11.75
+    device: Classroom 29-Trailer 3a
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.49
+    device: D14
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.130
+    device: Classroom 20
+  - device_type: EdgeSwitch 24 500W
+    primary_ip: 10.100.10.42
+    device: D7
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.45
+    device: D10
+  - device_type: EdgeSwitch 48 500W
+    primary_ip: 10.100.11.82
+    device: Classroom 30 Trailer Data
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.27
+    device: E7
+  - device_type: EdgeSwitch 24 500W
+    primary_ip: 10.100.10.110
+    device: Inventory Room
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.74
+    device: unknown
+  - device_type: EdgeSwitch 48 500W
+    primary_ip: 10.100.10.47
+    device: D12
+  - device_type: EdgeSwitch 48 750W
+    primary_ip: 10.100.10.4
+    device: Building B -1
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.48
+    device: D13
+  - device_type: EdgeSwitch 24 250W
+    primary_ip: 10.100.11.74
+    device: G1 Data
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.26
+    device: E6
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.11.32
+    device: E12 -2
+  - device_type: EdgeSwitch 8 150W
+    primary_ip: 10.100.10.38
+    device: D3
+  

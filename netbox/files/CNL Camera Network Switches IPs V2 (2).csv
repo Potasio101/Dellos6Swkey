@@ -1,0 +1,83 @@
+﻿device,device_type,primary_ip
+Building Admin 1,EdgeSwitch 48 500W,10.100.10.18
+Exit Shack,EdgeSwitch 8 150W,10.100.10.133
+E14,EdgeSwitch 8 150W,10.100.10.34
+E3 Fiber Switch,EdgeSwitch 16 XG,10.100.10.21
+Multi Purpose Room/Edu5,EdgeSwitch 8 150W,10.100.10.77
+E13,EdgeSwitch 8 150W,10.100.10.33
+E1,EdgeSwitch 8 150W,10.100.10.19
+Intake-Medical,EdgeSwitch 48 500W,10.100.10.6
+E2,EdgeSwitch 8 150W,10.100.10.20
+D9-Data,EdgeSwitch 8 150W,10.100.11.47
+G1,EdgeSwitch 8 150W,10.100.10.70
+C13,EdgeSwitch 8 150W,10.100.10.63
+E5,EdgeSwitch 24 500W,10.100.10.25
+C9,EdgeSwitch 8 150W,10.100.10.59
+E5 data,EdgeSwitch 8 150W,10.100.11.25
+E7-2,EdgeSwitch 8 150W,10.100.10.72
+D4,EdgeSwitch 24 250W,10.100.10.39
+D6 data,EdgeSwitch 8 150W,10.100.11.44
+C5,EdgeSwitch 8 150W,10.100.10.55
+PD Trailer,EdgeSwitch 8 150W,10.100.10.76
+D5-Data,EdgeSwitch 8 150W,10.100.11.43
+Building Admin 2,EdgeSwitch 48 500W,10.100.10.17
+Classroom 22,EdgeSwitch 48 750W,10.100.10.9
+D5,EdgeSwitch 24 250W,10.100.10.40
+E10,EdgeSwitch 8 150W,10.100.10.30
+F3 Fiber Switch,EdgeSwitch 48 500W,10.100.10.68
+C10,EdgeSwitch 8 150W,10.100.10.60
+Jonathan's Testing Switch 48port,EdgeSwitch 48 500W,10.100.10.80
+C15,EdgeSwitch 8 150W,10.100.10.65
+Main Entrance Shack,EdgeSwitch 8 150W,10.100.10.132
+C2,EdgeSwitch 8 150W,10.100.10.52
+C8,EdgeSwitch 8 150W,10.100.10.58
+E8,EdgeSwitch 8 150W,10.100.10.28
+D6,EdgeSwitch 8 150W,10.100.10.41
+E7 Data,EdgeSwitch 8 150W,10.100.11.27
+D3-Data,EdgeSwitch 8 150W,10.100.11.41
+D11,EdgeSwitch 8 150W,10.100.10.46
+C3,EdgeSwitch 24 500W,10.100.10.53
+C14,EdgeSwitch 8 150W,10.100.10.64
+D2,EdgeSwitch 8 150W,10.100.10.37
+Training Office,EdgeSwitch 24 500W,10.100.10.71
+Building B Fiber Core,EdgeSwitch 12 Fiber,10.100.10.3
+E15,EdgeSwitch 8 150W,10.100.10.35
+D8,EdgeSwitch 8 150W,10.100.10.43
+GYM Data,EdgeSwitch 24 250W,10.100.11.76
+E8 Data,EdgeSwitch 8 150W,10.100.11.28
+C4,EdgeSwitch 8 150W,10.100.10.54
+D12 Data,EdgeSwitch 48 500W,10.100.11.50
+C13 Data,EdgeSwitch 48 500W,10.100.11.66
+D9,EdgeSwitch 8 150W,10.100.10.44
+C12,EdgeSwitch 8 150W,10.100.10.62
+C11,EdgeSwitch 8 150W,10.100.10.61
+D7 DATA,EdgeSwitch 8 150W,10.100.11.45
+E9 Data,EdgeSwitch 8 150W,10.100.11.29
+C1,EdgeSwitch 8 150W,10.100.10.51
+D1,EdgeSwitch 16 150W,10.100.10.36
+Classroom 26,EdgeSwitch 8 150W,10.100.10.75
+Building A Core Camera,EdgeSwitch 48 500W,10.100.10.2
+C7,EdgeSwitch 8 150W,10.100.10.57
+Classroom 21,EdgeSwitch 24 500W,10.100.10.8
+Building B-2,EdgeSwitch 48 750W,10.100.10.78
+E11,EdgeSwitch 8 150W,10.100.10.31
+E9,EdgeSwitch 8 150W,10.100.10.100
+E6 Data,EdgeSwitch 8 150W,10.100.11.26
+C6,EdgeSwitch 8 150W,10.100.10.56
+D15,EdgeSwitch 8 150W,10.100.10.115
+Classroom 29-Trailer 3a,EdgeSwitch 24 500W,10.100.11.75
+D14,EdgeSwitch 8 150W,10.100.10.49
+Classroom 20,EdgeSwitch 8 150W,10.100.10.130
+D7,EdgeSwitch 24 500W,10.100.10.42
+D10,EdgeSwitch 8 150W,10.100.10.45
+Classroom 30 Trailer Data,EdgeSwitch 48 500W,10.100.11.82
+E7,EdgeSwitch 8 150W,10.100.10.27
+Inventory Room,EdgeSwitch 24 500W,10.100.10.110
+unknown,EdgeSwitch 8 150W,10.100.10.74
+D12,EdgeSwitch 48 500W,10.100.10.47
+Building B -1,EdgeSwitch 48 750W,10.100.10.4
+D13,EdgeSwitch 8 150W,10.100.10.48
+G1 Data,EdgeSwitch 24 250W,10.100.11.74
+E6,EdgeSwitch 8 150W,10.100.10.26
+E12 -2,EdgeSwitch 8 150W,10.100.11.32
+D3,EdgeSwitch 8 150W,10.100.10.38

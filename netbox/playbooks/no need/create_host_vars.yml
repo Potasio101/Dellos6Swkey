@@ -1,0 +1,45 @@
+---
+- name: Create host_vars for switches
+  hosts: localhost
+  gather_facts: no
+  vars_prompt:
+    - name: switch_name
+      prompt: "Enter the switch name"
+      private: no
+    - name: vlan_name
+      prompt: "Enter the VLAN name Default: "
+      private: no
+      default: "camera"
+    - name: vlan_id
+      prompt: "Enter the VLAN ID Default:"
+      private: no
+      default: 75
+    - name: vlan_untagged_interfaces
+      prompt: "Enter VLAN untagged interfaces (comma-separated)"
+      private: no
+    - name: uplink_trunk_ports
+      prompt: "Enter uplink trunk ports (comma-separated)"
+      private: no
+      default: 0/0
+    - name: downlink_trunk_ports
+      prompt: "Enter downlink trunk ports (comma-separated)"
+      private: no
+      default: 0/0
+    - name: lag_trunk_ports1
+      prompt: "Enter lag trunk ports1"
+      private: no
+      default: 0/0
+    - name: lag_trunk_ports2
+      prompt: "Enter lag trunk ports2"
+      private: no
+      default: 0/0
+    - name: portchannel
+      prompt: "Enter portchannel click enter for default: 3/1"
+      private: no
+
+
+  tasks:
+    - name: Generate host_vars file for the switch
+      template:
+        src: switch_vars_template.j2
+        dest: "/home/adminswk/cnl/edgeos/host_vars/{{ switch_name }}.yml"

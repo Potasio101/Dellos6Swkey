@@ -1,0 +1,15 @@
+plugin: netbox.netbox.nb_inventory
+api_endpoint: https://10.1.1.87/
+token: 265ea3ee46d0a136a0aeb688a3f612d54b83c70e
+validate_certs: False
+config_context: False
+group_by:
+  - device_roles
+  - sites
+
+query_filters:
+  - has_primary_ip: True
+  - status: active
+
+compose:
+  ansible_network_os: platform.slug

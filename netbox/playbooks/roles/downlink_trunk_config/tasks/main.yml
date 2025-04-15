@@ -1,0 +1,21 @@
+---
+- name: Check current trunk port configuration
+  ansible.netcommon.cli_command:
+    command: "show  interface ethernet {{ vlan_configurations[0].downlink_trunk_ports }} switchport "
+  register: result
+
+- name: Set trunk port downlink to the south network
+  ansible.netcommon.cli_command:
+    command: "{{ item }}"
+  loop:
+    - "configure"
+    - "interface {{ vlan_configurations[0].downlink_trunk_ports }}"
+    - "description 'trunk downlink to south network'"
+    - "switchport mode trunk"
+    - "exit"
+    - "exit"
+  when: 
+    - vlan_configurations[0].downlink_trunk_ports != '0/0'
+    - "'VLAN Switchport mode:Trunk' not in result.stdout"
+
+

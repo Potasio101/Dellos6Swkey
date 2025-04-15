@@ -1,0 +1,29 @@
+---
+
+- name: Gather facts from EdgeOS switches
+  hosts: backup
+  gather_facts: no
+  become: true
+  become_method: enable
+  
+  tasks:
+    - name: Create vlan
+      community.network.edgeswitch_vlan:
+        vlan_id: 100
+        name: "vlan100"
+        state: present
+      timeout: 60
+    
+    - name: Add interfaces to VLAN
+      community.network.edgeswitch_vlan:
+        vlan_id: 100
+        tagged_interfaces:
+          - 0/4-0/6
+
+    - name: Save configuration
+      ansible.netcommon.cli_command:
+        command: write memory
+        prompt: "Are you sure you want to save?"
+        answer: "y"
+      
+  

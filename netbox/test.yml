@@ -1,0 +1,5 @@
+
+devices:
+  - device_type: EdgeSwitch 48 500W
+    primary_ip: 10.100.10.18
+    device: Building Admin 1

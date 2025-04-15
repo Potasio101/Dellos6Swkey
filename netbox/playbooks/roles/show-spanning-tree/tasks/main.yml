@@ -1,0 +1,23 @@
+---
+# tasks file for save_config
+- name: Save configuration
+  ansible.netcommon.cli_command:
+    command: show spanning-tree summary
+  register: cmd_output
+
+- name: Set fact for use outside the role
+  set_fact:
+    spanning_tree_data: "{{ cmd_output.stdout }}"
+
+# - name: Display parsed output
+#   debug:
+#         var: cmd_output.stdout
+
+
+# - name: Parse output with TextFSM
+#   set_fact:
+#         parsed_output: "{{ cmd_output.stdout | parse_cli_textfsm('/home/adminswk/cnl/netbox/playbooks/templates/edgeswitchshowspanningtree.textfsm') }}"
+
+# - name: Display parsed output
+#   debug:
+#         var: parsed_output

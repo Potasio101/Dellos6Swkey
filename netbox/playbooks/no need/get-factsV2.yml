@@ -1,0 +1,17 @@
+---
+
+- name: Gather facts from EdgeOS switches
+  hosts: bck
+  gather_facts: no
+  become: true
+  become_method: enable
+
+  tasks:
+    - name: Get switch facts
+      community.network.edgeswitch_facts:
+        gather_subset: all
+      register: switch_facts
+
+    - name: switch_facts stdout_lines
+      debug:
+        var: switch_facts

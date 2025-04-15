@@ -1,0 +1,14 @@
+---
+- name: test spanning-tree-root role  on bck
+  hosts: Jonathan
+  gather_facts: no
+  become: true
+  become_method: enable
+
+  vars:
+    NETBOX_URL: "{{ lookup('env','NETBOX_URL') }}"
+    NETBOX_TOKEN: "{{ lookup('env','NETBOX_TOKEN') }}"
+
+  roles:
+    - reloadin
+    - spanning-tree-root

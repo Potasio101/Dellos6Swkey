@@ -1,0 +1,8 @@
+Value Interface (\S+)
+Value State (Forwarding|Blocking|Listening|Learning|Disabled)
+Value Role (Root|Designated|Alternate|Backup)
+
+Start
+  # Match and capture the data lines in InterfaceTable
+  ^${Interface}\s+${State}\s+${Role} -> Record
+ 

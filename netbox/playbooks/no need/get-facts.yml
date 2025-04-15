@@ -1,0 +1,25 @@
+---
+
+- name: Gather facts from EdgeOS switches
+  hosts: testswitch
+  gather_facts: no
+  connection: network_cli
+
+  vars:
+    ansible_ssh_common_args: '-oHostKeyAlgorithms=+ssh-rsa'
+    ansible_ssh_pass: 'ubnt'
+    ansible_user: 'ubnt'
+    ansible_network_os: "edgeswitch"
+
+  tasks:
+    - name: Get switch facts
+      edgeos_command:
+        commands:
+          - show interfaces
+          - show version
+          - show system uptime
+      register: switch_facts
+
+    - name: Display switch facts
+      debug:
+        var: switch_facts.stdout_lines

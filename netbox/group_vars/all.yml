@@ -1,0 +1,6 @@
+ansible_ssh_extra_args: '-oHostKeyAlgorithms=ssh-rsa'
+ansible_connection: "network_cli"
+ansible_network_os: "edgeswitch"
+ansible_user: "ubnt" 
+ansible_ssh_pass: "SwK@dm1n" 
+ansible_become_pass: "SwK@dm1n"

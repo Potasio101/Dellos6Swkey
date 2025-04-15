@@ -1,0 +1,27 @@
+---
+- name: Gather facts from EdgeOS switches
+  hosts: testswitch  # Replace with the name of your target host group or host(s)
+  
+  tasks:
+    - name: Get switch facts
+      ansible_network_os: eos
+      gather_facts: no
+      connection: network_cli
+      vars:
+        ansible_user: ubnt  # Replace with your SSH username
+        ansible_password: ubnt  # Replace with your SSH password
+      tasks:
+        - name: Show system information
+          eos_command:
+            commands:
+              - show system information
+          register: switch_info
+
+        # Add more tasks as needed
+
+    # Add more tasks as needed
+
+  handlers:
+    - name: Display switch information
+      debug:
+        var: switch_info.stdout_lines

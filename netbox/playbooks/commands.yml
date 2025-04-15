@@ -1,0 +1,16 @@
+- block:
+  - ansible.netcommon.cli_command:
+    command: "configure"
+  - ansible.netcommon.cli_command:
+    command: "interface 0/{{ item }}"
+    loop: "{{ downlink_trunk_ports }}"
+  - ansible.netcommon.cli_command:
+    command: "description 'trunk downlink to south network'"
+  - ansible.netcommon.cli_command:
+    command: "switchport mode trunk"
+  - ansible.netcommon.cli_command:
+    command: "spanning-tree guard root"
+  - ansible.netcommon.cli_command:
+    command: "exit"
+  - ansible.netcommon.cli_command:
+    command: "exit"

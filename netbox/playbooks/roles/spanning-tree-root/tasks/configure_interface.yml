@@ -1,0 +1,19 @@
+- name: Enter configuration mode
+  ansible.netcommon.cli_command:
+    command: "configure"
+
+- name: Apply spanning-tree guard root to interface
+  ansible.netcommon.cli_command:
+    command: "interface {{ interface }}"
+
+- name: Set spanning-tree guard root
+  ansible.netcommon.cli_command:
+    command: "spanning-tree guard root"
+
+- name: Exit interface configuration
+  ansible.netcommon.cli_command:
+    command: "exit"
+
+- name: Exit configuration mode
+  ansible.netcommon.cli_command:
+    command: "exit"

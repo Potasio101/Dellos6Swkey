@@ -1,0 +1,18 @@
+---
+- name: Configure VLANs on Switches
+  hosts: Jonathan
+  gather_facts: no
+  become: true
+  become_method: enable
+
+  vars:
+    NETBOX_URL: "{{ lookup('env','NETBOX_URL') }}"
+    NETBOX_TOKEN: "{{ lookup('env','NETBOX_TOKEN') }}"
+
+  roles:
+    - reloadin
+    - vlan_purge
+    # - downlink_trunk_config
+    # - uplink_trunk_config
+    # - save_config 
+

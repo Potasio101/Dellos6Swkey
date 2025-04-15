@@ -1,0 +1,16 @@
+---
+
+- name: Gather facts from EdgeOS switches
+  hosts: testswitch
+  gather_facts: no
+  
+   
+  tasks:
+    - name: Collect only the running config and default facts
+      ansible.netcommon.cli_command:
+        command: show network
+      register: result
+
+    - name: Print the result
+      debug:
+        msg: "{{ result.stdout_lines }}"

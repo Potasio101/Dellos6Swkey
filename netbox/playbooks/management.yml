@@ -1,0 +1,64 @@
+- name: "Test NetBox interface module"
+  connection: local
+  hosts: localhost
+  gather_facts: False
+  vars:
+    NETBOX_ENDPOINT: "{{ lookup('env','NETBOX_URL') }}"
+    NETBOX_TOKEN: "{{ lookup('env','NETBOX_TOKEN') }}"
+    tenant_name: "UM Southwest Key Program"
+    site_name: "Program 980 Norma Linda"
+    device: "Admin 1"
+    device_role: "switch"
+    interface: "Management"
+    type: "1000Base-t (1GE)"
+    primary_address: "10.100.10.18/32"
+  tasks:
+    # - name: Debug NetBox Endpoint and Token
+    #   debug:
+    #     var:
+    #       NETBOX_ENDPOINT: "{{ NETBOX_ENDPOINT }}"
+    #       NETBOX_TOKEN: "{{ NETBOX_TOKEN }}"
+
+    - name: Create Management Interfaces
+      netbox.netbox.netbox_device_interface:
+        netbox_url: "{{ NETBOX_ENDPOINT }}"
+        netbox_token: "{{ NETBOX_TOKEN }}"
+        validate_certs: false
+        data:
+          device: "{{ device }}"
+          name: "{{ interface }}"
+          type: "{{ type }}"
+          mgmt_only: true
+        state: present
+
+    - name: Add Primary IP to Management Interface
+      netbox.netbox.netbox_ip_address:
+        netbox_url: "{{ NETBOX_ENDPOINT }}"
+        netbox_token: "{{ NETBOX_TOKEN }}"
+        validate_certs: false
+        data:
+          address: "{{ primary_address }}"
+          assigned_object:
+            device: "{{ device }}"
+            name: "{{ interface }}"
+
+    - name: Update Management Interfaces
+      netbox.netbox.netbox_device_interface:
+        netbox_url: "{{ NETBOX_ENDPOINT }}"
+        netbox_token: "{{ NETBOX_TOKEN }}"
+        validate_certs: false
+        data:
+          device: "{{ device }}"
+          name: "{{ interface }}"
+          mgmt_only: true
+
+    - name: Update Primary IP
+      netbox.netbox.netbox_device:
+        netbox_url: "{{ NETBOX_ENDPOINT }}"
+        netbox_token: "{{ NETBOX_TOKEN }}"
+        validate_certs: false
+        data:
+          name: "{{ device }}"
+          site: "{{ site_name }}"
+          tenant: "{{ tenant_name }}"
+          primary_ip4: "{{ primary_address }}"

@@ -1,0 +1,32 @@
+# This is a comment
+
+# Define hosts in the 'web' group
+[web]
+webserver ansible_host=192.168.1.100  # Hostname or IP address
+webserver2 ansible_host=192.168.1.101  # Another webserver
+
+# Define hosts in the 'db' group
+[db]
+dbserver ansible_host=192.168.1.102  # Database server
+
+# Create a 'production' group that includes both 'web' and 'db' groups
+[production:children]
+web
+db
+
+# Variables for the 'web' group
+[web:vars]
+http_port=80  # HTTP port
+
+# Variables for the 'db' group
+[db:vars]
+db_port=5432  # Database port
+
+# Special groups
+[all:vars]
+ansible_user=admin  # Default SSH user for all hosts
+ansible_ssh_private_key_file=/path/to/private/key  # Default SSH private key file
+
+[ungrouped]
+# Hosts not assigned to any group
+otherhost ansible_host=192.168.1.103

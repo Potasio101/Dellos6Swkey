@@ -1,0 +1,8 @@
+---
+- name: Test SSH Connectivity
+  hosts: Jonathan # Replace with the name of your target network device group or host(s)
+  gather_facts: no
+
+  tasks:
+    - name: Test SSH Connection
+      ansible.builtin.ping:

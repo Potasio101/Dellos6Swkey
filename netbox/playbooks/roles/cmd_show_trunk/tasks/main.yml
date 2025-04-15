@@ -1,0 +1,10 @@
+---
+# tasks file for save_config
+- name: Save configuration
+  ansible.netcommon.cli_command:
+    command: show interface switch trunk
+  register: cmd_output
+
+- name: Set fact for use outside the role
+  set_fact:
+    switch_trunk_data: "{{ cmd_output.stdout }}"

@@ -1,0 +1,25 @@
+---
+- name: Example Ansible Playbook with VLAN for Dell OS6
+  hosts: all
+  gather_facts: no
+  collections:
+    - dellemc.os6
+
+  vars:
+    vlans:
+      - id: 30
+        name: User_Data_Wired
+      - id: 100
+        name: Voice
+
+  tasks:
+    - name: Create VLANs on Dell OS6 switch
+      dellemc.os6.os6_vlan:
+        vlan_id: "{{ item.id }}"
+        name: "{{ item.name }}"
+        state: present
+      loop: "{{ vlans }}"
+
+    - name: Print message
+      debug:
+        msg: "VLANs created successfully on Dell OS6 switch."

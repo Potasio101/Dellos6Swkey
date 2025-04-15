@@ -1,0 +1,14 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: Ensure common role is applied
+      include_role:
+        name: common
+
+    - name: Placeholder for additional tasks
+      debug:
+        msg: "This is a placeholder for additional tasks."
+
+    - name: Another placeholder for future tasks
+      debug:
+        msg: "This is another placeholder for future tasks."

@@ -1,0 +1,9 @@
+---
+- name: Probar lookup de prefixes por site
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Obtener prefixes del sitio Austin HQ
+      debug:
+        var: lookup('netbox.netbox.nb_lookup', 'prefixes', api_filter='site=austin-hq')

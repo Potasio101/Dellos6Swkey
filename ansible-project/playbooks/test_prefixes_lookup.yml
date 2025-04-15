@@ -4,18 +4,11 @@
   gather_facts: no
 
   tasks:
-    - name: Cargar prefixes del sitio Austin HQ
-      set_fact:
-        site_prefixes: "{{ lookup('netbox.netbox.nb_lookup', 'prefixes',
-                          api_filter='site=austin-hq',
-                          api_endpoint='http://10.1.1.87',
-                          token='aacf5a29ceeeaaceae12add71f1c9ca44f6c79dd',
-                          validate_certs=False) }}"
-
-    - name: Extraer solo VLANs con valor válido
-      set_fact:
-        vlan_ids: "{{ site_prefixes | selectattr('vlan', 'defined') | map(attribute='vlan.vid') | unique | list }}"
-
-    - name: Mostrar VLAN IDs únicos extraídos
+    - name: Query devices from NetBox and display details
       debug:
-        var: vlan_ids
+        msg: >
+          "Device {{ item.value.display_name }} (ID: {{ item.key }}) was
+           manufactured by {{ item.value.device_type.manufacturer.name }}"
+      loop: "{{ query('netbox.netbox.nb_lookup', 'devices',
+                      api_endpoint='http://10.1.1.87/',
+                      token='aacf5a29ceeeaaceae12add71f1c9ca44f6c79dd') }}"

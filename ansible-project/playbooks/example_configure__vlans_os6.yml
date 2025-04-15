@@ -2,6 +2,7 @@
 - name: Example Ansible Playbook with VLAN for Dell OS6
   hosts: all
   gather_facts: no
+  connection: network_cli
   collections:
     - dellemc.os6
 

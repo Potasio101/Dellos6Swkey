@@ -1,0 +1,24 @@
+---
+- name: Pull interface info from NetBox
+  hosts: localhost
+  gather_facts: no
+  collections:
+    - netbox.netbox
+
+  vars:
+    netbox_url: "{{ lookup('env','NETBOX_URL') }}"
+    netbox_token: "{{ lookup('env','NETBOX_TOKEN') }}"
+    device_name: "E3-Fiber-Switch"  # Replace with the actual device name
+
+  tasks:
+    - name: Get device data from NetBox
+      set_fact:
+        device_data: "{{ lookup('netbox.netbox.nb_lookup', 'devices', api_filter='name=' + device_name, api_endpoint=netbox_url, token=netbox_token) }}"
+
+    - name: Get interfaces from device
+      set_fact:
+        interfaces: "{{ lookup('netbox.netbox.nb_lookup', 'interfaces', api_filter='device_id=' + device_data[0]['id'] | string, api_endpoint=netbox_url, token=netbox_token) }}"
+
+    - name: Print interface information
+      debug:
+        var: interfaces

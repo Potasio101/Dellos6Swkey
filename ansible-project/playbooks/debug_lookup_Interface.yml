@@ -2,9 +2,6 @@
 - name: Debug interfaces from NetBox using nb_lookup
   hosts: all
   gather_facts: no
-  vars:
-    netbox_url: "{{ hostvars[inventory_hostname].netbox_url }}"
-    netbox_token: "{{ hostvars[inventory_hostname].netbox_token }}"
 
   tasks:
     - name: Lookup interfaces from NetBox

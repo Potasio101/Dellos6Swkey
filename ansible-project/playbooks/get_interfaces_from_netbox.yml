@@ -17,7 +17,7 @@
 
     - name: Get interfaces from device
       set_fact:
-        interfaces: "{{ lookup('netbox.netbox.nb_lookup', 'interfaces', api_filter='device_id=' + device_data[0]['id'] | string, api_endpoint=netbox_url, token=netbox_token, validate_certs=False) }}"
+        interfaces: "{{ lookup('netbox.netbox.nb_lookup', 'interfaces', api_filter='device_id=' + (device_data.id | string), api_endpoint=netbox_url, token=netbox_token, validate_certs=False) }}"
 
     - name: Print interface information
       debug:

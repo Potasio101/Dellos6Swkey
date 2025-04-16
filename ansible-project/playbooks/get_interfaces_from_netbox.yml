@@ -11,6 +11,11 @@
     device_name: "{{ inventory_hostname }}"  # Replace with the actual device name
 
   tasks:
+    #Print inventory_hostname
+    - name: Print inventory_hostname
+      debug:
+        msg: "The inventory_hostname is {{ inventory_hostname }}"
+
     - name: Get device data from NetBox
       set_fact:
         device_data: "{{ lookup('netbox.netbox.nb_lookup', 'devices', api_filter='name=' + device_name, api_endpoint=netbox_url, token=netbox_token, validate_certs=False) }}"

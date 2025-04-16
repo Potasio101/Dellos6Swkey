@@ -15,7 +15,7 @@
                    api_endpoint=netbox_url,
                    token=netbox_token,
                    validate_certs=False,
-                   api_filter=device_id={{ hostvars[inventory_hostname].id }}) }}
+                   api_filter="device_id=" ~ hostvars[inventory_hostname].id) }}
 
     - name: Show interface list
       debug:

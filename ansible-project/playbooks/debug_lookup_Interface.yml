@@ -1,22 +1,36 @@
 ---
-- name: Debug interfaces from NetBox using nb_lookup
-  hosts: all
+- name: Debug interfaces from NetBox using URI calls
+  hosts: localhost
   gather_facts: no
+  connection: local
 
   vars:
-    netbox_url: "{{ lookup('env', 'netbox_url') }}"
-    netbox_token: "{{ lookup('env', 'netbox_token') }}"
+    NETBOX_URL: "{{ lookup('env','NETBOX_URL') }}"
+    NETBOX_TOKEN: "{{ lookup('env','NETBOX_TOKEN') }}"
 
   tasks:
-    - name: Lookup interfaces from NetBox
-      set_fact:
-        netbox_interfaces: >-
-          {{ query('netbox.netbox.nb_lookup', 'interfaces',
-                   api_endpoint=netbox_url,
-                   token=netbox_token,
-                   validate_certs=False,
-                   api_filter="device_id=" ~ hostvars[inventory_hostname].id) }}
+    - name: 1 - Get Devices
+      uri:
+          url: "{{ NETBOX_URL }}api/dcim/devices/?name={{ inventory_hostname }}"
+          method: GET
+          return_content: yes
+          validate_certs: no          
+          headers:
+              accept: "application/json"
+              Authorization: "Token {{ NETBOX_TOKEN }}"
+      register: device
+
+    - name: 2 - Get Interfaces
+      uri:
+          url: "{{ NETBOX_URL }}api/dcim/interfaces/?device={{ inventory_hostname }}&limit=0"
+          method: GET
+          return_content: yes
+          validate_certs: no 
+          headers:
+              accept: "application/json"
+              Authorization: "Token {{ NETBOX_TOKEN }}"
+      register: interfaces
 
     - name: Show interface list
       debug:
-        msg: "{{ netbox_interfaces | json_query('[].{name: name, mode: mode, untagged: untagged_vlan.vid, tagged: tagged_vlans[*].vid}') }}"
+        msg: "{{ interfaces.json.results | json_query('[].{name: name, mode: mode, untagged: untagged_vlan.vid, tagged: tagged_vlans[*].vid}') }}"

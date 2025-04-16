@@ -1,0 +1,9 @@
+---
+- name: Show all NetBox inventory data for hosts
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Print hostvars
+      debug:
+        var: hostvars[inventory_hostname]

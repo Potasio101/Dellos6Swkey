@@ -1,6 +1,6 @@
 ---
 - name: Debug interfaces from NetBox using URI calls
-  hosts: localhost
+  hosts: all
   gather_facts: no
   connection: local
 

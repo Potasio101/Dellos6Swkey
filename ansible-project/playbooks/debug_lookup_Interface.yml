@@ -3,6 +3,10 @@
   hosts: all
   gather_facts: no
 
+  vars:
+    netbox_url: "{{ lookup('env', 'netbox_url') }}"
+    netbox_token: "{{ lookup('env', 'netbox_token') }}"
+
   tasks:
     - name: Lookup interfaces from NetBox
       set_fact:

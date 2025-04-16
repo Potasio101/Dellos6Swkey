@@ -1,6 +1,6 @@
 ---
 - name: Pull interface info from NetBox
-  hosts: localhost
+  hosts: all
   gather_facts: no
   collections:
     - netbox.netbox

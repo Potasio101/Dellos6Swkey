@@ -8,7 +8,7 @@
   vars:
     netbox_url: "{{ lookup('env','NETBOX_URL') }}"
     netbox_token: "{{ lookup('env','NETBOX_TOKEN') }}"
-    device_name: "E3-Fiber-Switch"  # Replace with the actual device name
+    device_name: "{{ inventory_hostname }}"  # Replace with the actual device name
 
   tasks:
     - name: Get device data from NetBox

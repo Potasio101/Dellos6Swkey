@@ -1,0 +1,12 @@
+services:
+  netbox-device-type-library-import:
+    image: ghcr.io/minitriga/netbox-device-type-library-import
+    environment:
+      - NETBOX_URL=http://10.20.0.6:8000
+      - NETBOX_TOKEN=0123456789abcdef0123456789abcdef01234567
+      - VENDORS=Cisco
+    command: >
+      sh -c "
+        pip install --force-reinstall pynetbox==7.3.4 &&
+        python /app/nb-dt-import.py
+      "

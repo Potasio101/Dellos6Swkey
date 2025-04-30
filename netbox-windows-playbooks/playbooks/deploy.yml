@@ -1,0 +1,7 @@
+- hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Deploy application or configuration
+      # Placeholder for deployment tasks
+      debug:
+        msg: "Deploying application or configuration to {{ inventory_hostname }}"

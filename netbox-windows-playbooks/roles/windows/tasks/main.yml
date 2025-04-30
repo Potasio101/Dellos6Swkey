@@ -1,0 +1,11 @@
+- name: Windows Playbook Tasks
+  hosts: windows
+  tasks:
+    - name: Placeholder for Windows task 1
+      win_command: echo "Task 1 executed"
+
+    - name: Placeholder for Windows task 2
+      win_command: echo "Task 2 executed"
+
+    - name: Placeholder for Windows task 3
+      win_command: echo "Task 3 executed"

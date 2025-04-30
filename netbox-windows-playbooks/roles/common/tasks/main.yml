@@ -1,0 +1,43 @@
+- name: Common tasks for Windows hosts
+  hosts: all
+  tasks:
+    - name: Ensure common prerequisites are installed
+      win_feature:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - Web-Server
+        - Web-Asp-Net
+        - Web-ISAPI-Extensions
+
+    - name: Copy common configuration files
+      win_copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+      loop:
+        - { src: 'templates/config.xml', dest: 'C:\\ProgramData\\MyApp\\config.xml' }
+        - { src: 'templates/settings.json', dest: 'C:\\ProgramData\\MyApp\\settings.json' }
+
+    - name: Ensure required services are running
+      win_service:
+        name: "{{ item }}"
+        state: started
+      loop:
+        - wuauserv
+        - bits
+
+    - name: Create necessary directories
+      win_file:
+        path: "{{ item }}"
+        state: directory
+      loop:
+        - C:\ProgramData\MyApp
+        - C:\ProgramData\MyApp\Logs
+
+    - name: Set up environment variables
+      win_environment:
+        name: "{{ item.name }}"
+        value: "{{ item.value }}"
+      loop:
+        - { name: 'MYAPP_HOME', value: 'C:\\ProgramData\\MyApp' }
+        - { name: 'MYAPP_LOG_LEVEL', value: 'INFO' }

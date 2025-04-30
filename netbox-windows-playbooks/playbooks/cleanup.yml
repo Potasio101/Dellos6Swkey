@@ -1,0 +1,31 @@
+- name: Cleanup Playbook
+  hosts: all
+  tasks:
+    - name: Remove temporary files
+      win_file:
+        path: C:\path\to\temporary\files
+        state: absent
+
+    - name: Uninstall applications
+      win_package:
+        name: "{{ item }}"
+        state: absent
+      loop:
+        - Application1
+        - Application2
+
+    - name: Revert configuration changes
+      win_lineinfile:
+        path: C:\path\to\config\file
+        regexp: '^SettingToRevert'
+        state: absent
+
+    - name: Clean up logs
+      win_file:
+        path: C:\path\to\logs\*
+        state: absent
+
+    - name: Remove unused directories
+      win_file:
+        path: C:\path\to\unused\directory
+        state: absent

@@ -1,6 +1,6 @@
 ---
 - name: WinRM Connectivity Test
-  hosts: all   # Ajusta este grupo a tu inventario (p.ej. 'ad_servers' o como lo llames)
+  hosts: domain   # Ajusta este grupo a tu inventario (p.ej. 'ad_servers' o como lo llames)
   connection: winrm
   gather_facts: false
 

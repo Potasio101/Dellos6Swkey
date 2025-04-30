@@ -1,0 +1,9 @@
+---
+- name: WinRM Connectivity Test
+  hosts: all   # Ajusta este grupo a tu inventario (p.ej. 'ad_servers' o como lo llames)
+  connection: winrm
+  gather_facts: false
+
+  tasks:
+    - name: Test WinRM connectivity
+      ansible.windows.win_ping:

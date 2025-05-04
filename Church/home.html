@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iglesia Roca de Salvacion</title>
+
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #FFFFFF;
+            color: #000000;
+            padding: 20px;
+            border-bottom: 2px solid #D09B4A;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px;
+        }
+
+        /* Logo Styling - Change the width if needed */
+        img {
+            width: 200px;
+            height: auto;
+            margin: 40px 0 10px 0;
+        }
+
+        /* Paragraph Styling */
+        p {
+            font-size: 18px;
+            color: #000000;
+            margin-bottom: 30px;
+        }
+
+        /* Button Container */
+        .button-container {
+            margin: 60px 0;
+        }
+
+        /* Button Styling - Change colors for different themes */
+        button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #D09B4A;
+            color: #000000;
+            border: none;
+            font-size: 16px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Button Hover Effect */
+        button:hover {
+            background-color: #A87C34;
+            color: #FFFFFF;
+        }
+
+        /* Debug Information Section - Hidden by default */
+        #debugInfo {
+            display: none;
+            visibility: hidden;
+            margin-top: 40px;
+            padding: 10px;
+            border: 1px solid #D09B4A;
+            border-radius: 5px;
+            display: inline-block;
+        }
+    </style>
+
+    <script>
+        /**
+         * Function to retrieve URL parameters.
+         * This function ensures we get parameters from both the main window and an iframe.
+         */
+        function getUrlParams() {
+            let urlParams = new URLSearchParams(window.location.search);
+            if (window.self !== window.top) {
+                try {
+                    urlParams = new URLSearchParams(window.parent.location.search);
+                } catch (error) {
+                    console.warn("⚠️ Unable to access parent window parameters due to security restrictions.");
+                }
+            }
+            return urlParams;
+        }
+
+        const urlParams = getUrlParams();
+        const debugMode = true;  // Set to false if you want to disable debugging by default
+
+        /**
+         * Function to log messages only if debug mode is enabled.
+         * Useful for tracking issues during development.
+         */
+        function debugLog(message) {
+            if (debugMode) {
+                console.log(message);
+            }
+        }
+
+        // Change the page title - Modify this if using for a different application
+        document.title = "Production Order Management";
+
+        // Try to change the parent page title (if inside an iframe)
+        if (window.self !== window.top) {
+            try {
+                window.parent.document.title = "Production Order Management";
+            } catch (error) {
+                debugLog("⚠️ Unable to change the parent page title due to security restrictions.");
+            }
+        }
+
+        /**
+         * Function to retrieve the App ID from the URL.
+         * Modify this function if your application uses a different parameter structure.
+         */
+        function getAppId() {
+            const appId = urlParams.get("appid");
+            debugLog(`🆔 Retrieved App ID: ${appId || "Not found"}`);
+            return appId;
+        }
+
+        /**
+         * Function to get the base URL of the Dynamics 365 environment.
+         * If using another system, replace this with the appropriate logic.
+         */
+        function updateBaseUrl() {
+            const baseUrl = window.self !== window.top ? window.parent.location.origin : window.location.origin;
+            debugLog(`🌐 Detected Base URL: ${baseUrl}`);
+            return baseUrl;
+        }
+
+        /**
+         * Function to navigate to different sections of the application.
+         * Modify this if integrating with another entity or system.
+         */
+        function navigateTo(pageType) {
+            const baseUrl = updateBaseUrl();
+            const appId = getAppId();
+
+            if (!appId) {
+                alert("Error: Unable to retrieve the App ID. Ensure the Web Resource is running inside a Model-Driven App.");
+                return;
+            }
+
+            // Define the target URL based on the selected action
+            let url = pageType === "create"
+                ? `${baseUrl}/main.aspx?appid=${appId}&pagetype=entityrecord&etn=rba_ordemdeproducao`  // Change entity if necessary
+                : `${baseUrl}/main.aspx?appid=${appId}&pagetype=entitylist&etn=rba_ordemdeproducao`;  // Change entity if necessary
+
+            debugLog(`🔗 Navigating to: ${url}`);
+
+            // Open inside iframe or standalone mode
+            if (window.self !== window.top) {
+                window.parent.open(url, "_self");
+            } else {
+                window.open(url, "_self");
+            }
+        }
+
+        /**
+         * Function to update the UI on page load.
+         * Ensures debug information is displayed if enabled.
+         */
+        window.onload = function () {
+            const baseUrl = updateBaseUrl();
+            const appId = getAppId();
+
+            // Show debug info if debug mode is enabled
+            if (debugMode) {
+                document.getElementById("debugInfo").style.display = "block";
+                document.getElementById("debugInfo").style.visibility = "visible";
+                document.getElementById("baseUrl").textContent = baseUrl || "Not found";
+                document.getElementById("appId").textContent = appId || "Not found";
+            }
+        };
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to the Production Order System</h1>
+    </header>
+
+    <main>
+        <!-- Change the logo if using another brand -->
+        <img src="https://i.ibb.co/yD1m395/rudimar-powerapps-logo.png" alt="Rudimar Logo">
+
+        <p>Manage your production orders easily and efficiently.</p>
+
+        <!-- Modify button text or actions if needed -->
+        <div class="button-container">
+            <button onclick="navigateTo('create')">Create New Order</button>
+            <button onclick="navigateTo('list')">View Existing Orders</button>
+        </div>
+
+        <!-- Debugging Information - Appears only if debug mode is enabled -->
+        <div id="debugInfo">
+            <p><strong>Base URL:</strong> <span id="baseUrl">Loading...</span></p>
+            <p><strong>App ID:</strong> <span id="appId">Loading...</span></p>
+        </div>
+    </main>
+
+</body>
+</html>

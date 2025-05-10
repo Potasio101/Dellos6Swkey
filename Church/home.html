@@ -156,7 +156,7 @@
 
             // Define the target URL based on the selected action
             let url = pageType === "create"
-                ? `${baseUrl}/main.aspx?appid=${appId}&pagetype=entityrecord&etn=rba_ordemdeproducao`  // Change entity if necessary
+                ? `${baseUrl}/main.aspx?appid=${appId}&pagetype=entityrecord&etn=crdc7_contribucion`  // Change entity if necessary
                 : `${baseUrl}/main.aspx?appid=${appId}&pagetype=entitylist&etn=rba_ordemdeproducao`;  // Change entity if necessary
 
             debugLog(`🔗 Navigating to: ${url}`);
@@ -190,19 +190,19 @@
 <body>
 
     <header>
-        <h1>Welcome to the Production Order System</h1>
+        <h1>Iglesia Roca de Salvacion</h1>
     </header>
 
     <main>
         <!-- Change the logo if using another brand -->
         <img src="https://i.ibb.co/yD1m395/rudimar-powerapps-logo.png" alt="Rudimar Logo">
 
-        <p>Manage your production orders easily and efficiently.</p>
+        <p>Manejo de Ofrendas y Diezmos</p>
 
         <!-- Modify button text or actions if needed -->
         <div class="button-container">
-            <button onclick="navigateTo('create')">Create New Order</button>
-            <button onclick="navigateTo('list')">View Existing Orders</button>
+            <button onclick="navigateTo('create', 'crdc7_contribucion')">Ingresar Ofrendas</button>
+            <!-- <button onclick="navigateTo('list')">View Existing Orders</button> -->
         </div>
 
         <!-- Debugging Information - Appears only if debug mode is enabled -->

@@ -8,20 +8,20 @@
     <style>
         /* General Page Styling */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             text-align: center;
-            background-color: #FFFFFF;
-            color: #000000;
+            background: linear-gradient(135deg, #f2f2f2, #d9e4f5);
+            color: #333333;
         }
 
         /* Header Section */
         header {
-            background-color: #FFFFFF;
-            color: #000000;
-            padding: 20px;
-            border-bottom: 2px solid #D09B4A;
+            background-color: #4A90E2;
+            color: #FFFFFF;
+            padding: 40px 20px;
+            border-bottom: 5px solid #D09B4A;
         }
 
         /* Main Content */
@@ -31,9 +31,11 @@
 
         /* Logo Styling - Change the width if needed */
         img {
-            width: 200px;
+            width: 250px;
             height: auto;
             margin: 40px 0 10px 0;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         /* Paragraph Styling */
@@ -46,24 +48,30 @@
         /* Button Container */
         .button-container {
             margin: 60px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         /* Button Styling - Change colors for different themes */
         button {
             display: inline-block;
-            padding: 15px 30px;
-            background-color: #D09B4A;
-            color: #000000;
+            width: 220px;
+            padding: 15px 0;
+            background-color: #4A90E2;
+            color: #FFFFFF;
             border: none;
-            font-size: 16px;
+            font-size: 18px;
             margin: 10px;
-            border-radius: 5px;
+            border-radius: 25px;
             cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* Button Hover Effect */
         button:hover {
-            background-color: #A87C34;
+            background-color: #357ABD;
             color: #FFFFFF;
         }
 
@@ -201,8 +209,10 @@
 
         <!-- Modify button text or actions if needed -->
         <div class="button-container">
-            <button onclick="navigateTo('create', 'crdc7_contribucion')">Ingresar Ofrendas</button>
-            <!-- <button onclick="navigateTo('list')">View Existing Orders</button> -->
+            <button onclick="navigateTo('create', 'crdc7_contribucion')">Ofrendas</button>
+            <button>Placeholder 1</button>
+            <button>Placeholder 2</button>
+            <button>Placeholder 3</button>
         </div>
 
         <!-- Debugging Information - Appears only if debug mode is enabled -->

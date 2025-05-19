@@ -164,8 +164,8 @@
 
             // Define the target URL based on the selected action
             let url = pageType === "create"
-                ? `${baseUrl}/main.aspx?appid=${appId}&pagetype=entityrecord&etn=crdc7_contribucion`  // Change entity if necessary
-                : `${baseUrl}/main.aspx?appid=${appId}&pagetype=entitylist&etn=rba_ordemdeproducao`;  // Change entity if necessary
+                ? `${baseUrl}/main.aspx?appid=${appId}&pagetype=entityrecord&etn=crdc7_offering`
+                : `${baseUrl}/main.aspx?appid=${appId}&pagetype=entitylist&etn=rba_ordemdeproducao`;
 
             debugLog(`🔗 Navigating to: ${url}`);
 
@@ -209,10 +209,10 @@
 
         <!-- Modify button text or actions if needed -->
         <div class="button-container">
-            <button onclick="navigateTo('create', 'crdc7_contribucion')">Ofrendas</button>
+            <button onclick="navigateTo('create', 'crdc7_offering')">Ofrendas</button>
             <button>Placeholder 1</button>
             <button>Placeholder 2</button>
-            <button>Placeholder 3</button>
+            <button>Dashboard</button>
         </div>
 
         <!-- Debugging Information - Appears only if debug mode is enabled -->
